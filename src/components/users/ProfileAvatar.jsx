@@ -24,14 +24,14 @@ const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', className = '' })
       hash = str.charCodeAt(i) + ((hash << 5) - hash);
     }
     const colors = [
-      'bg-blue-500',
-      'bg-green-500',
-      'bg-purple-500',
-      'bg-pink-500',
-      'bg-yellow-500',
-      'bg-red-500',
-      'bg-indigo-500',
-      'bg-teal-500',
+      'bg-gradient-to-tr from-blue-600 to-blue-300',
+      'bg-gradient-to-tr from-green-600 to-green-300',
+      'bg-gradient-to-tr from-purple-600 to-purple-300',
+      'bg-gradient-to-tr from-pink-600 to-pink-300',
+      'bg-gradient-to-tr from-yellow-600 to-yellow-300',
+      'bg-gradient-to-tr from-red-600 to-red-300',
+      'bg-gradient-to-tr from-indigo-600 to-indigo-300',
+      'bg-gradient-to-tr from-teal-600 to-teal-300',
     ];
     return colors[Math.abs(hash % colors.length)];
   };
