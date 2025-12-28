@@ -1,16 +1,19 @@
 import { useState } from "react";
 
-export default function Login(setUser){
-    const [name, setName] = useState(null);
-    const handleSubmit = () => {
+export default function Login({setUser}){
+    const [name, setName] = useState("");
+    const handleSubmit = (e) => {
+        e.preventDefault();
         if (name.trim().length === 0) return;
+        console.log(name);
         setUser(name);
     }   
    return (
       <div className="w-full min-h-screen flex items-center justify-center bg-black/30">
         <form onSubmit={handleSubmit} 
-              className="px-6 py-10 bg-gray-200 flex flex-col justify-center items-center rounded-4xl shadow-lg space-y-4">
-          
+              className="px-6 py-10 bg-gray-200 flex flex-col justify-center items-center rounded-4xl shadow-lg space-y-4"
+              >
+                
           <h1 className="text-xl font-medium mb-8">Login form</h1>
           
           <input type="text"
