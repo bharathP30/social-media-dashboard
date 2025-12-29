@@ -2,6 +2,8 @@ import React from 'react';
 
 const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', className = '' }) => {
   
+  console.log(name,"and type of name is ", typeof name);
+  
   const sizeClasses = {
     sm: 'w-8 h-8 text-sm',
     md: 'w-12 h-12 text-lg',

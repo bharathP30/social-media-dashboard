@@ -39,23 +39,20 @@ const useLocalStorage = (key, initialValue) => {
 
 export default function App() {
   const [user, setUser] = useState("");
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const [posts, setPosts] = useLocalStorage(user ? `${user}-posts` : "posts", []);
 
   const UserSet = (name) => {
     setUser(name);
-    console.log("set user to " + name)
+    console.log("received name is " + name);
   }
-
-  if (!user) {
-    return <Login setUser={UserSet} />;
-  }
+ 
   return (
     <div className="w-full min-h-screen bg-gray-200">
       <ThemeContext.Provider value={theme}>
         <UserContext.Provider value={user}>
-
-          <Header />
+          {!user ? <Login setUser={UserSet} /> : <Header />}
+          
         </UserContext.Provider>
       </ThemeContext.Provider>
     </div>
