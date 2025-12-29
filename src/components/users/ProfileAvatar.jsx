@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md' }) => {
+const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', onClick }) => {
   
   console.log(name,"and type of name is ", typeof name);
   
@@ -42,6 +42,7 @@ const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md' }) => {
 
   const handleClick = () => {
     console.log("Profile avatar clicked");
+    onClick && onClick();
   };
 
   return (
