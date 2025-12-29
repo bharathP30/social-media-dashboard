@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', className = '' }) => {
+const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md' }) => {
   
   console.log(name,"and type of name is ", typeof name);
   
@@ -40,9 +40,13 @@ const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', className = '' })
 
   const bgColor = stringToColor(name);
 
+  const handleClick = () => {
+    console.log("Profile avatar clicked");
+  };
+
   return (
-    <div
-      className={`relative inline-flex items-center justify-center overflow-hidden rounded-full ${sizeClasses[size]} ${bgColor} ${className}`}
+    <div onClick={handleClick}
+      className={`relative inline-flex items-center justify-center overflow-hidden rounded-full ${sizeClasses[size]} ${bgColor}`}
     >
       {imageUrl ? (
         <img

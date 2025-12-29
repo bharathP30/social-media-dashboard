@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext, useContext } from "react";
-import Header from "./components/layout/Header";
 import Login from "./components/Login";
+import Home from "./components/pages/Home";
 
 export const ThemeContext = createContext();
 export const UserContext = createContext();
@@ -35,23 +35,29 @@ const useLocalStorage = (key, initialValue) => {
 };
 
 
-
-
 export default function App() {
-  const [user, setUser] = useState("");
-  const [theme, setTheme] = useState("dark");
+  const [user, setUser] = useLocalStorage("user", null);
+  const [theme, setTheme] = useLocalStorage("theme", "light");
   const [posts, setPosts] = useLocalStorage(user ? `${user}-posts` : "posts", []);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!user);
+  const [currentPage, setCurrentPage] = useState("home");
 
   const UserSet = (name) => {
     setUser(name);
-    console.log("received name is " + name);
+    console.log("set User to " + name);
   }
+
+  const ThemeSet = (theme) => {
+    setTheme(theme);
+  };
+
+  console.log(isLoggedIn);
  
   return (
     <div className="w-full min-h-screen bg-gray-200">
       <ThemeContext.Provider value={theme}>
         <UserContext.Provider value={user}>
-          {!user ? <Login setUser={UserSet} /> : <Header />}
+          {!user ? <Login setUser={UserSet} setTheme={ThemeSet} /> : <Home />}
           
         </UserContext.Provider>
       </ThemeContext.Provider>
