@@ -6,7 +6,10 @@ import { VscGraphLine } from "react-icons/vsc";
 import { VscAdd } from "react-icons/vsc";
 
 export default function Menu({setPage}) {
-  const user = useContext(UserContext);
+  const User = useContext(UserContext);
+  const { user } = User;
+  console.log("User in Menu component is ", user);  
+  
   const handleClick = (page) => {
     console.log("Button clicked");
     setPage(page);

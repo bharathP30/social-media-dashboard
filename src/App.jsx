@@ -6,6 +6,7 @@ import Profile from "./components/pages/Profile";
 
 export const ThemeContext = createContext();
 export const UserContext = createContext();
+export const PageContext = createContext();
 
 const useLocalStorage = (key, initialValue) => {
   const [storedValue, setStoredValue] = useState(() => {
@@ -78,10 +79,10 @@ export default function App() {
   return (
     <div className="w-full min-h-screen bg-gray-200">
       <ThemeContext.Provider value={theme}>
-        <UserContext.Provider value={user}>
-          {!user ? (<Login setUser={UserSet} setTheme={ThemeSet} />) : (renderPage())}
-         
-         
+        <UserContext.Provider value={{user, logout}}>
+          <PageContext.Provider value={currentPage}>
+            {!user ? (<Login setUser={UserSet} setTheme={ThemeSet} />) : (renderPage())}
+          </PageContext.Provider>
         </UserContext.Provider>
       </ThemeContext.Provider>
     </div>

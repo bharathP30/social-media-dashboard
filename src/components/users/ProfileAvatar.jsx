@@ -12,6 +12,7 @@ const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', onClick }) => {
   };
 
   
+
   const initials = name
     .split(' ')
     .map((n) => n[0])
