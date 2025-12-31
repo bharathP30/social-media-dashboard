@@ -3,6 +3,8 @@ import Login from "./components/Login";
 import Home from "./components/pages/Home";
 import Statistics from "./components/pages/Statistics";
 import Profile from "./components/pages/Profile";
+import darkBGD from './assets/images/darkBGD.jpg';
+import pinkBGD from './assets/images/pinkBGD.jpg';
 
 export const ThemeContext = createContext();
 export const UserContext = createContext();
@@ -77,7 +79,7 @@ export default function App() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gray-200">
+    <div className="w-full min-h-screen min-w-screen bg-cover bg-fixed bg-no-repeat"  style={{ backgroundImage: `url('${theme === 'light' ? pinkBGD : darkBGD}')` }}>
       <ThemeContext.Provider value={theme}>
         <UserContext.Provider value={{user, logout}}>
           <PageContext.Provider value={currentPage}>

@@ -4,7 +4,7 @@ import { UserContext } from "../../App";
 import { PageContext } from "../../App";
 import { SlArrowLeft } from "react-icons/sl";
 import { WiDaySunny } from "react-icons/wi";
-import { WiMoonAltWaningCrescent4  } from "react-icons/wi";
+import { WiMoonAltWaningCrescent4 } from "react-icons/wi";
 import { VscAccount } from "react-icons/vsc";
 import { VscAdd  } from "react-icons/vsc";
 import { VscSignOut } from "react-icons/vsc";
@@ -102,7 +102,6 @@ export default function Profile({setTheme, setPage}) {
               </div>
             </li>
 
-
             <li 
               onClick={()=> {
               logout();
@@ -121,10 +120,8 @@ export default function Profile({setTheme, setPage}) {
                 </div>
             </li>
 
-          </ul>
+            </ul>
         </div> 
-      
-     
       </div>
     )
 }

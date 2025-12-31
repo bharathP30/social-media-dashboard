@@ -3,6 +3,9 @@ import { useContext } from "react";
 import { ThemeContext } from "../../App";
 import { UserContext } from "../../App";
 import Menu from "../layout/Menu";
+import RedditFeed from "../feed/redditFeed";
+
+
 
 export default function Home({setTheme, setPage}) {
     const theme = useContext(ThemeContext);
@@ -12,9 +15,16 @@ export default function Home({setTheme, setPage}) {
     console.log("Current theme in Home component is ", theme);
 
    return (
-      <div className={`w-full min-h-screen flex items-center justify-center ${theme === 'light' ? 'bg-linear-to-tr from-purple-500 via-pink-400 to-blue-500' : 'bg-linear-to-tr from-black via-gray-900/90 to-black' }`}>
-        
+      <div className="absolute inset-0 bg-center bg-cover flex flex-col items-center justify-start min-h-screen">
 
+        <div className={`w-full max-w-3xl mx-4 mt-8 mb-20 p-6 border rounded-3xl shadow-2xl backdrop-blur-lg
+        ${
+        theme === 'light' ? 'bg-white/20 border-white/20 backdrop-blur-md' : 'bg-gray-600/30 backdrop:backdrop-blur-2xl text-white border-white/10'
+        }`}> 
+         
+        </div>
+
+        <RedditFeed />
         <Menu setPage={setPage} />
       </div>
     )
