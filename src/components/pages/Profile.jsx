@@ -21,12 +21,12 @@ export default function Profile({setTheme, setPage}) {
    console.log("User in Profile component is ", user);
 
    return (
-      <div className={`w-full min-h-screen flex items-center justify-center ${theme === 'light' ? 'bg-linear-to-tr from-purple-500 via-pink-400 to-blue-500' : 'bg-linear-to-tr from-black via-gray-900/90 to-black' }`}>
+      <div className={`w-full min-h-screen flex items-center justify-center ${theme === 'light' ? 'bg-linear-to-tr from-purple-500/30 via-black/50 to-purple-500/30' : 'bg-linear-to-tr from-black/40 via-gray-900/80 to-black' }`}>
        
         <button
         className={`fixed top-4 left-4 px-4 py-2 rounded-md border transition duration-300 ${
           theme === "light"
-            ? 'bg-white/20 border-white/10 hover:bg-white/30 active:bg-white/40 backdrop-blur-md' 
+            ? 'bg-white/20 border-white/10 hover:bg-white/30 active:bg-white/40 backdrop-blur-sm' 
             : 'bg-gray-700/20 border-white/10 backdrop-blur-md text-white hover:bg-gray-600/30 active:bg-gray-600/40'
         }`}>
           <SlArrowLeft onClick={()=> setPage('home')} />
@@ -35,19 +35,19 @@ export default function Profile({setTheme, setPage}) {
         <button onClick={()=> setTheme(theme === 'light' ? 'dark' : 'light')}
        className={`fixed top-4 right-4 px-4 py-2 rounded-md border transition duration-300 ${
           theme === "light"
-            ? 'bg-white/20 border-white/10 hover:bg-white/30 active:bg-white/40 backdrop-blur-md' 
+            ? 'bg-white/20 border-white/10 hover:bg-white/30 active:bg-white/40 backdrop-blur-sm' 
             : 'bg-gray-700/20 border-white/10 backdrop-blur-md text-white hover:bg-gray-600/30 active:bg-gray-600/40'
         }`}>
        { theme === 'light' ? <WiMoonAltWaningCrescent4 size={24} /> : <WiDaySunny size={24} /> }
         </button>
 
-        <div className={`w-full max-w-md mx-4 p-8 rounded-3xl shadow-2xl border backdrop-blur-lg ${
+        <div className={`w-full max-w-md mx-4 p-8 rounded-3xl shadow-2xl border ${
         theme === 'light' 
-          ? 'bg-white/20 border-white/10 text-gray-900' 
-          : 'bg-black/30 border-gray-400/20 text-white'
+          ? 'bg-white/20 border-white/10 text-gray-900  backdrop-blur-sm' 
+          : 'bg-black/30 border-gray-400/20 text-white  backdrop-blur-lg'
       }`}>
             <div className="flex flex-col items-center gap-4 mb-8">
-            <ProfileAvatar name={user} size="xl"/>
+            <ProfileAvatar name={user} size="xxl"/>
             <h2 className="text-2xl text-center font-medium font-sans mb-4">{user.charAt(0).toUpperCase() + user.slice(1)}</h2>
             </div> 
             
@@ -56,7 +56,7 @@ export default function Profile({setTheme, setPage}) {
             <li onClick={()=> setShowAccount(!showAccount)}
               className={`px-4 py-3 rounded-lg transition duration-300 cursor-pointer ${
               theme === 'light'
-                ? 'bg-white/30 hover:bg-white/40 active:bg-white/50'
+                ? 'bg-white/20 hover:bg-white/30 active:bg-white/40'
                 : 'bg-gray-700/30 hover:bg-gray-700/40 active:bg-gray-700/50'
             }`}>
 
@@ -80,7 +80,7 @@ export default function Profile({setTheme, setPage}) {
             <li onClick={()=> setPage('stats')}
               className={`px-4 py-3 rounded-lg transition duration-300 cursor-pointer ${
               theme === 'light'
-                ? 'bg-white/30 hover:bg-white/40 active:bg-white/50'
+                ?'bg-white/20 hover:bg-white/30 active:bg-white/40'
                 : 'bg-gray-700/30 hover:bg-gray-700/40 active:bg-gray-700/50'
             }`}>
               <div className="flex items-center gap-3 font-medium">
@@ -92,7 +92,7 @@ export default function Profile({setTheme, setPage}) {
             <li
             className={`px-4 py-3 rounded-lg transition duration-300 cursor-pointer ${
               theme === 'light'
-                ? 'bg-white/30 hover:bg-white/40 active:bg-white/50'
+                ? 'bg-white/20 hover:bg-white/30 active:bg-white/40'
                 : 'bg-gray-700/30 hover:bg-gray-700/40 active:bg-gray-700/50'
             }`}
             >

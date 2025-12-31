@@ -43,7 +43,6 @@ const useLocalStorage = (key, initialValue) => {
 export default function App() {
   const [user, setUser] = useLocalStorage("user", null);
   const [theme, setTheme] = useLocalStorage("theme", "light");
-  const [posts, setPosts] = useLocalStorage(user ? `${user}-posts` : "posts", []);
   const [currentPage, setCurrentPage] = useState("home");
 
   const UserSet = (name) => {

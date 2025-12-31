@@ -1,4 +1,5 @@
 import React from 'react';
+import Me3 from '../../assets/images/Me3.jpg';
 
 const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', onClick }) => {
   
@@ -9,9 +10,10 @@ const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', onClick }) => {
     md: 'w-12 h-12 text-lg',
     lg: 'w-16 h-16 text-2xl',
     xl: 'w-24 h-24 text-4xl',
+    xxl: 'w-32 h-32 text-5xl',
   };
 
-  
+  imageUrl = Me3 || imageUrl; 
 
   const initials = name
     .split(' ')

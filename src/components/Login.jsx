@@ -22,20 +22,20 @@ export default function Login({setUser, setTheme}) {
     }
 
    return (
-      <div className={`w-full min-h-screen flex items-center justify-center ${theme === 'light' ? 'bg-linear-to-tr from-purple-500 via-pink-400 to-blue-500' : 'bg-linear-to-tr from-black via-gray-900/80 to-black' }`}>
+      <div className={`w-full min-h-screen flex items-center justify-center ${theme === 'light' ? 'bg-linear-to-tr from-purple-500/30 via-black/40 to-purple-500/30' : 'bg-linear-to-tr from-black/40 via-gray-900/80 to-black/60' }`}>
         <button onClick={handleThemeToggle}
         className={`fixed top-4 right-4 px-4 py-2 rounded-md border transition duration-300 ${theme === "light"? 'bg-white/30 border-white/10 active:bg-white/20': 'bg-gray-700/20 border-white/10 backdrop:backdrop-blur-2xl text-white active:bg-gray-600/30'}`}>
         {theme==="light"? (<WiMoonAltWaningCrescent4 size={24} />) : <WiDaySunny size={24} />}
         </button>
         
         <form onSubmit={handleSubmit} 
-              className={`px-6 py-10 w-3/4 lg:w-2/5 max-w-md border flex flex-col justify-center items-center gap-2 rounded-4xl shadow-lg space-y-4 ${theme === 'light' ? 'bg-white/20 text-black border-white/10 backdrop-blur-lg' : 'bg-black/30 backdrop:backdrop-blur-2xl text-white border-gray-400/20' }`}
+              className={`px-6 py-10 w-3/4 lg:w-2/5 max-w-md border flex flex-col justify-center items-center gap-2 rounded-4xl shadow-lg space-y-4 ${theme === 'light' ? 'bg-white/10 text-black border-white/20 backdrop-blur-sm' : 'bg-black/30 backdrop:backdrop-blur-lg text-white border-gray-400/20' }`}
               >
                 
           <h1 className="text-xl font-medium mb-8">Login form</h1>
           
           <input type="text"
-                className={`outline-none p-4 w-full md:w-11/12 rounded-md focus:ring-1 ${theme === 'light' ? ' bg-gray-100/20 focus:ring-white/30 text-black' : 'bg-black/30 text-white focus:ring-white/10'}`} 
+                className={`outline-none p-4 w-full md:w-11/12 rounded-md focus:ring-1 ${theme === 'light' ? ' bg-gray-300/10 focus:ring-white/30 text-black' : 'bg-black/30 text-white focus:ring-white/10'}`} 
                 name="username"
                 value={name}
                 onChange={(event)=>setName(event.target.value)}
@@ -47,7 +47,7 @@ export default function Login({setUser, setTheme}) {
           >
             Login
           </button>
-          <small className="opacity-30">Login as a Demo User</small>
+          <small className="opacity-40 ">Login as a Demo User</small>
         </form>
         
       </div>

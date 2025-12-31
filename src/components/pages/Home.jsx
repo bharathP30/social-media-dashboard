@@ -15,7 +15,7 @@ export default function Home({setTheme, setPage}) {
     console.log("Current theme in Home component is ", theme);
 
    return (
-      <div className="absolute inset-0 bg-center bg-cover flex flex-col items-center justify-start min-h-screen">
+      <div className={`absolute inset-0 bg-center bg-cover flex flex-col items-center justify-start min-h-screen ${theme === 'light' && 'bg-black/30'}`}>
 
         <div className={`w-full max-w-3xl mx-4 mt-8 mb-20 p-6 border rounded-3xl shadow-2xl backdrop-blur-lg
         ${
