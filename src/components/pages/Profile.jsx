@@ -1,15 +1,8 @@
 import { useState, useContext } from "react";
-import { ThemeContext } from "../../App";
-import { UserContext } from "../../App";
-import { PageContext } from "../../App";
+import { ThemeContext, UserContext, PageContext } from "../../App";
 import { SlArrowLeft } from "react-icons/sl";
-import { WiDaySunny } from "react-icons/wi";
-import { WiMoonAltWaningCrescent4 } from "react-icons/wi";
-import { VscAccount } from "react-icons/vsc";
-import { VscAdd  } from "react-icons/vsc";
-import { VscSignOut } from "react-icons/vsc";
-import { VscGraphLine } from "react-icons/vsc";
-import { VscSettingsGear  } from "react-icons/vsc";
+import { WiDaySunny, WiMoonAltWaningCrescent4 } from "react-icons/wi";
+import { VscAccount, VscAdd, VscSignOut, VscGraphLine, VscSettingsGear } from "react-icons/vsc";
 import ProfileAvatar  from "../users/ProfileAvatar";
 
 export default function Profile({setTheme, setPage}) {

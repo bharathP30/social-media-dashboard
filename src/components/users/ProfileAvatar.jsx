@@ -13,7 +13,7 @@ const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', onClick }) => {
     xxl: 'w-32 h-32 text-5xl',
   };
 
-  imageUrl = Me3 || imageUrl; 
+  const image = Me3 || imageUrl; 
 
   const initials = name
     .split(' ')
@@ -52,9 +52,9 @@ const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', onClick }) => {
     <div onClick={handleClick}
       className={`relative inline-flex items-center justify-center overflow-hidden rounded-full ${sizeClasses[size]} ${bgColor}`}
     >
-      {imageUrl ? (
+      {image ? (
         <img
-          src={imageUrl}
+          src={image}
           alt={name}
           className="w-full h-full object-cover"
           onError={(e) => {

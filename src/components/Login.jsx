@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { useContext } from "react";
+import { useState,useContext } from "react";
 import { ThemeContext } from "../App";
-import { WiDaySunny } from "react-icons/wi";
-import { WiMoonAltWaningCrescent4  } from "react-icons/wi";
+import { WiDaySunny, WiMoonAltWaningCrescent4 } from "react-icons/wi";
 
 export default function Login({setUser, setTheme}) {
     const [name, setName] = useState("");
@@ -15,14 +13,13 @@ export default function Login({setUser, setTheme}) {
         console.log(name);
         setUser(name);
     }   
-   
 
     const handleThemeToggle = () => {
         setTheme(theme === "light" ? "dark" : "light");
     }
 
    return (
-      <div className={`w-full min-h-screen flex items-center justify-center ${theme === 'light' ? 'bg-linear-to-tr from-purple-500/30 via-black/40 to-purple-500/30' : 'bg-linear-to-tr from-black/40 via-gray-900/80 to-black/60' }`}>
+      <div className={`w-full min-h-screen flex items-center justify-center ${theme === 'light' ? 'bg-linear-to-tr from-purple-500/30 via-gray-900/50 to-purple-500/30' : 'bg-linear-to-tr from-black/40 via-gray-900/80 to-black/60' }`}>
         <button onClick={handleThemeToggle}
         className={`fixed top-4 right-4 px-4 py-2 rounded-md border transition duration-300 ${theme === "light"? 'bg-white/30 border-white/10 active:bg-white/20': 'bg-gray-700/20 border-white/10 backdrop:backdrop-blur-2xl text-white active:bg-gray-600/30'}`}>
         {theme==="light"? (<WiMoonAltWaningCrescent4 size={24} />) : <WiDaySunny size={24} />}
@@ -35,7 +32,7 @@ export default function Login({setUser, setTheme}) {
           <h1 className="text-xl font-medium mb-8">Login form</h1>
           
           <input type="text"
-                className={`outline-none p-4 w-full md:w-11/12 rounded-md focus:ring-1 ${theme === 'light' ? ' bg-gray-300/10 focus:ring-white/30 text-black' : 'bg-black/30 text-white focus:ring-white/10'}`} 
+                className={`outline-none p-4 w-full md:w-11/12 rounded-md focus:ring-1 ${theme === 'light' ? ' bg-black/10 focus:ring-white/30 text-black' : 'bg-black/30 text-white focus:ring-white/10'}`} 
                 name="username"
                 value={name}
                 onChange={(event)=>setName(event.target.value)}
@@ -48,8 +45,7 @@ export default function Login({setUser, setTheme}) {
             Login
           </button>
           <small className="opacity-40 ">Login as a Demo User</small>
-        </form>
-        
+        </form>      
       </div>
     )
 }
