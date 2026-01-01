@@ -19,7 +19,7 @@ export default function Home({setTheme, setPage}) {
 
         <div className={`w-full max-w-3xl mx-4 mt-8 mb-20 p-6 border rounded-3xl shadow-2xl backdrop-blur-lg
         ${
-        theme === 'light' ? 'bg-white/20 border-white/20 backdrop-blur-md' : 'bg-gray-600/30 backdrop:backdrop-blur-2xl text-white border-white/10'
+        theme === 'light' ? 'bg-white/20 border-white/20 backdrop-blur-md' : 'bg-gray-600/30 backdrop-blur-2xl text-white border-white/10'
         }`}> 
          
         </div>

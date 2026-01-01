@@ -82,7 +82,10 @@ export default function App() {
       <ThemeContext.Provider value={theme}>
         <UserContext.Provider value={{user, logout}}>
           <PageContext.Provider value={currentPage}>
-            {!user ? (<Login setUser={UserSet} setTheme={ThemeSet} />) : (renderPage())}
+            {!user ? (<Login setUser={UserSet} setTheme={ThemeSet} />) 
+            : (<div className="animate-in fade-in duration-300">
+              {renderPage()}
+                </div>)}
           </PageContext.Provider>
         </UserContext.Provider>
       </ThemeContext.Provider>

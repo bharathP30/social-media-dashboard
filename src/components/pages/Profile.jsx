@@ -37,7 +37,7 @@ export default function Profile({setTheme, setPage}) {
         <div className={`w-full max-w-md mx-4 p-8 rounded-3xl shadow-2xl border ${
         theme === 'light' 
           ? 'bg-white/20 border-white/10 text-gray-900  backdrop-blur-sm' 
-          : 'bg-black/30 border-gray-400/20 text-white  backdrop-blur-lg'
+          : 'bg-black/20 border-gray-400/20 text-white  backdrop-blur-sm'
       }`}>
             <div className="flex flex-col items-center gap-4 mb-8">
             <ProfileAvatar name={user} size="xxl"/>

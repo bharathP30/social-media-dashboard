@@ -13,7 +13,7 @@ const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', onClick }) => {
     xxl: 'w-32 h-32 text-5xl',
   };
 
-  const image = Me3 || imageUrl; 
+  const image = imageUrl || Me3; 
 
   const initials = name
     .split(' ')

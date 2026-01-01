@@ -20,11 +20,11 @@ export default function Menu({setPage}) {
 
   return (
    <>
-      <div className={` flex justify-around items-center border rounded-full fixed bottom-2 left-0 right-0 mx-auto w-full md:max-w-md md:right-auto md:left-auto p-2
+      <div className={` flex justify-around items-center border rounded-full fixed bottom-2 left-0 right-0 mx-auto w-full md:max-w-md md:right-auto md:left-auto lg:max-w-sm  p-2
       ${
           theme === "light"
             ? 'bg-white/20 border-white/20 backdrop-blur-md' 
-            : 'bg-gray-600/30 backdrop:backdrop-blur-2xl text-white border-white/10'
+            : 'bg-gray-600/30 backdrop-blur-2xl text-white border-white/10'
       }`}>
         <button
               className={style}
@@ -44,10 +44,12 @@ export default function Menu({setPage}) {
     </div>
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
-        <h2 className="text-xl font-bold mb-4 text-white">Create Post</h2>
+        <h2 className="text-xl font-medium fonts-sans mb-4 text-white">Create Post</h2>
         
         <textarea 
-          className="w-full p-3 rounded-lg bg-white/20 border border-white/10 text-white placeholder-white/50 outline-none focus:ring-1 focus:ring-white/30"
+          className={`w-full p-3 rounded-lg ${
+            theme === 'light' ? 'bg-white/20 border-white/20 text-white placeholder-white/70' : 'bg-black/40 border-white/10 text-white placeholder-white/70 backdrop-blur-2xl'
+          } focus:outline-none focus:ring-1 focus:ring-white/40 transition`}
           placeholder="What's on your mind?"
           rows="4"
         />

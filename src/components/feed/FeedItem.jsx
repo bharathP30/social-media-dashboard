@@ -6,7 +6,7 @@ export default function FeedItem({ ups, nums, title, content }) {
   const [showMsg, setShowMsg] = useState(false);
   const theme = useContext(ThemeContext);
 
-  const cardClasses = `w-full max-w-3xl mx-4 mt-8 mb-20 p-6 border rounded-3xl shadow-2xl backdrop-blur-lg
+  const cardClasses = `w-full max-w-3xl border rounded-md shadow-2xl backdrop-blur-lg
     ${theme === 'light' 
       ? 'bg-white/30 border-white/40' 
       : 'bg-gray-800/30 border-white/20 text-white'
@@ -26,7 +26,7 @@ export default function FeedItem({ ups, nums, title, content }) {
 
   return (
     <div className={cardClasses}>
-      <h3 className={`text-xl font-bold mb-3 ${theme === 'light' ? 'text-blue-700' : 'text-blue-400'}`}>
+      <h3 className={`text-xl font-bold mb-3 ${theme === 'light' ? 'text-black/50' : 'text-white/50'}`}>
         {title}
       </h3>
       
@@ -67,7 +67,7 @@ export default function FeedItem({ ups, nums, title, content }) {
               className={inputClasses}
             />
             <button className="p-3 rounded-full border border-gray-400/50 hover:bg-black/10 transition active:scale-95">
-              <TiArrowBackOutline className="text-xl rotate-180" />
+              <TiArrowBackOutline className="text-xl" />
             </button>
           </div>
         </div>
