@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
 import FeedItem from './FeedItem';

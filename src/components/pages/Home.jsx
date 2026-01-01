@@ -1,11 +1,7 @@
-import { useState } from "react";
-import { useContext } from "react";
-import { ThemeContext } from "../../App";
-import { UserContext } from "../../App";
+import { useState, useContext } from "react";
+import { ThemeContext, UserContext } from "../../App";
 import Menu from "../layout/Menu";
-import RedditFeed from "../feed/redditFeed";
-
-
+import RedditFeed  from "../feed/RedditFeed";
 
 export default function Home({setTheme, setPage}) {
     const theme = useContext(ThemeContext);
