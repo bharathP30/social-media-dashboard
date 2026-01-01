@@ -80,10 +80,6 @@ export default function Login({setUser, setTheme}) {
                         className="hidden"
                       />
                 </div>
-                 
-                          <p className={`text-sm ${theme === 'light' ? 'text-black/60' : 'text-white/60'}`}>
-                              {photoPreview ? 'Change photo' : 'Add profile photo (optional)'}
-                          </p>
           </div>
 
           <input type="text"
