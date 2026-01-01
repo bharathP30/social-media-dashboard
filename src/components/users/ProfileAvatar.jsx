@@ -1,10 +1,9 @@
-import React from 'react';
-import Me3 from '../../assets/images/Me3.jpg';
-
 const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', onClick }) => {
-  
-  console.log(name,"and type of name is ", typeof name);
-  
+  console.log('name in ProfileAvatar is ', name);
+  const userName = typeof name === 'object' ? name?.username : 'User';
+  const userPhoto = typeof name === 'object' ? name?.photo : imageUrl;
+  console.log('userName in ProfileAvatar is ', userName);
+
   const sizeClasses = {
     sm: 'w-8 h-8 text-sm',
     md: 'w-12 h-12 text-lg',
@@ -13,15 +12,15 @@ const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', onClick }) => {
     xxl: 'w-32 h-32 text-5xl',
   };
 
-  const image = imageUrl || Me3; 
-
-  const initials = name
+  const initials = userName
     .split(' ')
     .map((n) => n[0])
     .join('')
     .toUpperCase()
     .slice(0, 2);
 
+    const image = userPhoto;
+    console.log("initials are ", initials);
  
   const stringToColor = (str) => {
     let hash = 0;
@@ -41,7 +40,7 @@ const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', onClick }) => {
     return colors[Math.abs(hash % colors.length)];
   };
 
-  const bgColor = stringToColor(name);
+  const bgColor = stringToColor(userName);
 
   const handleClick = () => {
     console.log("Profile avatar clicked");

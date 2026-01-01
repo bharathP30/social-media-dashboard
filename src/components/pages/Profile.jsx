@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { ThemeContext, UserContext, PageContext } from "../../App";
+import { ThemeContext, UserContext } from "../../App";
 import { SlArrowLeft } from "react-icons/sl";
 import { WiDaySunny, WiMoonAltWaningCrescent4 } from "react-icons/wi";
 import { VscAccount, VscAdd, VscSignOut, VscGraphLine, VscSettingsGear } from "react-icons/vsc";
@@ -8,9 +8,10 @@ import ProfileAvatar  from "../users/ProfileAvatar";
 export default function Profile({setTheme, setPage}) {
     const theme = useContext(ThemeContext);
     const {user ,logout} = useContext(UserContext);
-    const page = useContext(PageContext);
     const [showAccount, setShowAccount] = useState(false);
-    
+
+    const userName = user.username || 'User';
+
    console.log("User in Profile component is ", user);
 
    return (
@@ -41,7 +42,7 @@ export default function Profile({setTheme, setPage}) {
       }`}>
             <div className="flex flex-col items-center gap-4 mb-8">
             <ProfileAvatar name={user} size="xxl"/>
-            <h2 className="text-2xl text-center font-medium font-sans mb-4">{user.charAt(0).toUpperCase() + user.slice(1)}</h2>
+            <h2 className="text-2xl text-center font-medium font-sans mb-4">{userName.charAt(0).toUpperCase() + userName.slice(1)}</h2>
             </div> 
             
             <ul className="space-y-4 w-full text-center font-sans font-medium">

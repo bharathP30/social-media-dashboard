@@ -25,7 +25,7 @@ export default function RedditFeed(){
 );
 
   return (
-    <div className={`w-full max-w-3xl max-h-150 overflow-y-auto p-2 mx-4 mt-8 mb-20 md:p-6 border rounded-3xl shadow-2xl backdrop-blur-lg
+    <div className={`w-full h-full max-w-3xl max-h-200 overflow-y-auto p-2 mx-4 mt-8 mb-20 space-y-4 md:p-6 border rounded-3xl shadow-2xl backdrop-blur-lg
         ${
         theme === 'light' ? 'bg-white/20 border-white/20 backdrop-blur-md' : 'bg-gray-600/30 backdrop-blur-2xl text-white border-white/10'
         }`}>

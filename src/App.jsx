@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext } from "react";
+import { useState, useEffect, createContext } from "react";
 import Login from "./components/Login";
 import Home from "./components/pages/Home";
 import Statistics from "./components/pages/Statistics";
@@ -45,9 +45,9 @@ export default function App() {
   const [theme, setTheme] = useLocalStorage("theme", "light");
   const [currentPage, setCurrentPage] = useState("home");
 
-  const UserSet = (name) => {
-    setUser(name);
-    console.log("set User to " + name);
+  const UserSet = (userData) => {
+    setUser(userData);
+    console.log("set User to " + userData);
   }
   const logout = (name) => {
     setUser(null);

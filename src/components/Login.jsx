@@ -1,17 +1,38 @@
 import { useState,useContext } from "react";
 import { ThemeContext } from "../App";
 import { WiDaySunny, WiMoonAltWaningCrescent4 } from "react-icons/wi";
+import { VscDeviceCameraVideo } from "react-icons/vsc";
 
 export default function Login({setUser, setTheme}) {
     const [name, setName] = useState("");
+    const [photoPreview, setPhotoPreview] = useState(null);
+    const [photoFile, setPhotoFile] = useState(null);
     const theme = useContext(ThemeContext);
     console.log("Current theme in Login component is ", theme);
+
+    const handlePicChange = (e) => {
+        const file = e.target.files[0];
+       if (file) {
+            setPhotoFile(file);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setPhotoPreview(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (name.trim().length === 0) return;
         console.log(name);
-        setUser(name);
+
+        const data = {
+            username: name,
+            photo: photoPreview,
+        };
+
+        setUser(data);
     }   
 
     const handleThemeToggle = () => {
@@ -31,6 +52,40 @@ export default function Login({setUser, setTheme}) {
                 
           <h1 className="text-xl font-medium mb-8">Login form</h1>
           
+          <div className="flex flex-col items-center gap-3 mb-4">
+                <div className="relative">
+                  {photoPreview ? (
+                    <img 
+                    src={photoPreview} 
+                    alt="Profile Preview" 
+                    className="w-24 h-24 rounded-full object-cover border-2 border-white/30" />
+                  ) : (
+                    <div className="w-24 h-24 rounded-full bg-gray-300 border-2 border-white/30 flex items-center justify-center">
+                      <VscDeviceCameraVideo size={24} className="text-gray-500" />
+                    </div>
+                  )}
+               
+                          <label 
+                            htmlFor="photo-upload"
+                            className="absolute -bottom-1 -right-1 bg-blue-500 hover:bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer transition shadow-lg"
+                            >
+                          <span className="text-white text-xl font-bold">+</span>
+                          </label>
+    
+                    <input 
+                        id="photo-upload"
+                        type="file" 
+                        accept="image/*"
+                        onChange={handlePicChange}
+                        className="hidden"
+                      />
+                </div>
+                 
+                          <p className={`text-sm ${theme === 'light' ? 'text-black/60' : 'text-white/60'}`}>
+                              {photoPreview ? 'Change photo' : 'Add profile photo (optional)'}
+                          </p>
+          </div>
+
           <input type="text"
                 className={`outline-none p-4 w-full md:w-11/12 rounded-md focus:ring-1 ${theme === 'light' ? ' bg-black/10 focus:ring-white/30 text-black' : 'bg-black/30 text-white focus:ring-white/10'}`} 
                 name="username"
