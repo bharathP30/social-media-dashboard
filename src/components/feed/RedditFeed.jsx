@@ -25,12 +25,12 @@ export default function RedditFeed(){
 );
 
   return (
-    <div className={`w-full h-full max-w-3xl max-h-200 overflow-y-auto p-2 mx-4 mt-8 mb-20 space-y-4 md:p-6 border rounded-3xl shadow-2xl backdrop-blur-lg
+    <div className={`w-full h-full max-w-3xl max-h-200 overflow-y-auto p-2 mx-auto mt-8 mb-20 space-y-4 md:p-6 border rounded-3xl shadow-2xl backdrop-blur-lg
         ${
-        theme === 'light' ? 'bg-white/20 border-white/20 backdrop-blur-md' : 'bg-gray-600/30 backdrop-blur-2xl text-white border-white/10'
+        theme === 'light' ? 'bg-white/20 border-white/30 backdrop-blur-md' : 'bg-black/30 backdrop-blur-2xl text-white border-white/10'
         }`}>
 
-         <h2 className={`text-2xl font-bold mb-4 ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>
+         <h2 className={`text-2xl font-bold mb-4 ${theme === 'light' ? 'text-gray-800' : 'text-white/80'}`}>
           Latest
         </h2>
       {posts.map(post => (

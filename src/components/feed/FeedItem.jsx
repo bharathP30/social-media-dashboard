@@ -26,7 +26,7 @@ export default function FeedItem({ ups, nums, title, content }) {
 
   return (
     <div className={cardClasses}>
-      <h3 className={`text-md font-md mb-2 ${theme === 'light' ? 'text-black/50' : 'text-white/50'}`}>
+      <h3 className={`text-md font-md ${theme === 'light' ? 'text-black/50' : 'text-white/50'}`}>
         {title}
       </h3>
       
