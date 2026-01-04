@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useContext } from "react";
-import {ThemeContext } from "../../App";
+import { UserContext, ThemeContext } from "../../App";
 import FeedItem from './FeedItem';
 
 export default function RedditFeed(){
-  const [posts, setPosts] = useState([]);
+  const { userPosts } = useContext(UserContext);
+  const [posts, setPosts] = useState(userPosts || []);
   const [loading, setLoading] = useState(true);
   const theme = useContext(ThemeContext); 
-
+  
   
   useEffect(() => {
-    fetch('https://www.reddit.com/r/funny.json?limit=10')
+    fetch('https://www.reddit.com/r/funny.json?limit=5')
       .then(res => res.json())
       .then(data => {
         setPosts(data.data.children.map(child => child.data));

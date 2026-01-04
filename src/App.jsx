@@ -44,10 +44,11 @@ export default function App() {
   const [user, setUser] = useLocalStorage("user", null);
   const [theme, setTheme] = useLocalStorage("theme", "light");
   const [currentPage, setCurrentPage] = useState("home");
-  const [posts, setPosts] = useLocalStorage(`${user?.username || 'default'}`, []);
+  
   console.log("name in App component are ", user?.username);
 
 const [userInteractions, setUserInteractions] = useLocalStorage( `${user?.username || 'default'}_interactions`, {});
+const [userPosts, setUserPosts] = useLocalStorage(`${user?.username || 'default'}`, []);
 
 const handleLike = (postId) => {
   setUserInteractions(prev => ({
@@ -115,7 +116,7 @@ const addComment = (postId, commentText) => {
   return (
     <div className="w-full min-h-screen min-w-screen bg-cover bg-fixed bg-no-repeat"  style={{ backgroundImage: `url('${theme === 'light' ? pinkBGD : darkBGD}')` }}>
       <ThemeContext.Provider value={theme}>
-        <UserContext.Provider value={{user, UserSet, logout, userInteractions, handleLike, addComment}}>
+        <UserContext.Provider value={{user, UserSet, logout, userInteractions, handleLike, addComment, userPosts, setUserPosts}}>
           <PageContext.Provider value={currentPage}>
             {!user ? (<Login setUser={UserSet} setTheme={ThemeSet} />) 
             : (<div className="animate-in fade-in duration-300">

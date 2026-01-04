@@ -6,8 +6,10 @@ import Modal from "./Modal";
 
 export default function Menu({setPage}) {
   const [showModal, setShowModal] = useState(false);
-  const {user, userInteractions} = useContext(UserContext);
+  const {user, userPosts, setUserPosts} = useContext(UserContext);
   const theme = useContext(ThemeContext);
+  const [newPostTitle, setNewPostTitle] = useState('');
+  const [newPostContent, setNewPostContent] = useState('');
  
   console.log("User in Menu component is ", user.username);  
   
@@ -17,6 +19,19 @@ export default function Menu({setPage}) {
   } 
   const style = `p-3 rounded-full active:bg-white/10 transition duration-300`;
  
+  const handlePostSubmit = () => {
+    setUserPosts(prevPosts => [
+      {
+        id: Date.now(),
+        title: newPostTitle,
+        selftext: newPostContent,
+        ups: 0,
+        num_comments: 0
+      },
+      ...prevPosts
+    ]);
+    setShowModal(false);
+  };  
 
   return (
    <>
@@ -45,13 +60,19 @@ export default function Menu({setPage}) {
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <h2 className="text-xl font-medium fonts-sans mb-4 text-white">Create Post</h2>
-        
+        <input type="text" value={newPostTitle} onChange={(e) => setNewPostTitle(e.target.value)} placeholder="Title..."
+              className={`w-full p-3 rounded-lg ${
+            theme === 'light' ? 'bg-white/20 border-white/20 text-white placeholder-white/70' : 'bg-black/40 border-white/10 text-white placeholder-white/70 backdrop-blur-2xl'
+          } focus:outline-none focus:ring-1 focus:ring-white/40 transition`}
+        />
         <textarea 
           className={`w-full p-3 rounded-lg ${
             theme === 'light' ? 'bg-white/20 border-white/20 text-white placeholder-white/70' : 'bg-black/40 border-white/10 text-white placeholder-white/70 backdrop-blur-2xl'
           } focus:outline-none focus:ring-1 focus:ring-white/40 transition`}
           placeholder="What's on your mind?"
           rows="4"
+          value={newPostContent}
+          onChange={(e)=> setNewPostContent(e.target.value)}
         />
         
         <div className="flex gap-3 mt-4">
@@ -62,9 +83,7 @@ export default function Menu({setPage}) {
             Cancel
           </button>
           <button 
-            onClick={() => {            
-              setShowModal(false);
-            }}
+            onClick={handlePostSubmit}
             className="flex-1 px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-white transition"
           >
             Post
