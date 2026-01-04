@@ -6,10 +6,10 @@ import Modal from "./Modal";
 
 export default function Menu({setPage}) {
   const [showModal, setShowModal] = useState(false);
-  const User = useContext(UserContext);
+  const {user, userInteractions} = useContext(UserContext);
   const theme = useContext(ThemeContext);
-  const { user } = User;
-  console.log("User in Menu component is ", user);  
+ 
+  console.log("User in Menu component is ", user.username);  
   
   const handleClick = (page) => {
     console.log("Button clicked");

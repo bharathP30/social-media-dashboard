@@ -44,6 +44,41 @@ export default function App() {
   const [user, setUser] = useLocalStorage("user", null);
   const [theme, setTheme] = useLocalStorage("theme", "light");
   const [currentPage, setCurrentPage] = useState("home");
+  const [posts, setPosts] = useLocalStorage(`${user?.username || 'default'}`, []);
+  console.log("name in App component are ", user?.username);
+
+const [userInteractions, setUserInteractions] = useLocalStorage( `${user?.username || 'default'}_interactions`, {});
+
+const handleLike = (postId) => {
+  setUserInteractions(prev => ({
+    ...prev,
+    [postId]: {
+      ...prev[postId],
+      liked: !prev[postId]?.liked,
+      likeCount: prev[postId]?.liked 
+        ? (prev[postId]?.likeCount || 0) - 1 
+        : (prev[postId]?.likeCount || 0) + 1
+    }
+  }));
+};
+
+const addComment = (postId, commentText) => {
+  setUserInteractions(prev => ({
+    ...prev,
+    [postId]: {
+      ...prev[postId],
+      comments: [
+        ...(prev[postId]?.comments || []),
+        {
+          id: Date.now(),
+          text: commentText,
+          author: user.username,
+          timestamp: new Date().toISOString()
+        }
+      ]
+    }
+  }));
+};
 
   const UserSet = (userData) => {
     setUser(userData);
@@ -80,7 +115,7 @@ export default function App() {
   return (
     <div className="w-full min-h-screen min-w-screen bg-cover bg-fixed bg-no-repeat"  style={{ backgroundImage: `url('${theme === 'light' ? pinkBGD : darkBGD}')` }}>
       <ThemeContext.Provider value={theme}>
-        <UserContext.Provider value={{user, logout}}>
+        <UserContext.Provider value={{user, UserSet, logout, userInteractions, handleLike, addComment}}>
           <PageContext.Provider value={currentPage}>
             {!user ? (<Login setUser={UserSet} setTheme={ThemeSet} />) 
             : (<div className="animate-in fade-in duration-300">

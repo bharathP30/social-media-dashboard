@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useContext } from "react";
-import { ThemeContext } from "../../App";
+import {ThemeContext } from "../../App";
 import FeedItem from './FeedItem';
 
 export default function RedditFeed(){
@@ -8,6 +8,7 @@ export default function RedditFeed(){
   const [loading, setLoading] = useState(true);
   const theme = useContext(ThemeContext); 
 
+  
   useEffect(() => {
     fetch('https://www.reddit.com/r/funny.json?limit=10')
       .then(res => res.json())
@@ -25,7 +26,7 @@ export default function RedditFeed(){
 );
 
   return (
-    <div className={`w-full h-full max-w-3xl max-h-200 overflow-y-auto p-2 mx-auto mt-8 mb-20 space-y-4 md:p-6 border rounded-3xl shadow-2xl backdrop-blur-lg
+    <div className={`w-full h-full max-w-3xl max-h-auto overflow-y-auto p-4 mx-auto mb-20 space-y-4 md:p-6 border rounded-3xl shadow-2xl
         ${
         theme === 'light' ? 'bg-white/20 border-white/30 backdrop-blur-md' : 'bg-black/30 backdrop-blur-2xl text-white border-white/10'
         }`}>
@@ -34,7 +35,7 @@ export default function RedditFeed(){
           Latest
         </h2>
       {posts.map(post => (
-        <FeedItem key={post.id} ups={post.ups} nums={post.num_comments} title={post.title} content={post.selftext} />
+        <FeedItem key={post.id} id={post.id} ups={post.ups} nums={post.num_comments} title={post.title} content={post.selftext} />
        
       ))}
     </div>
