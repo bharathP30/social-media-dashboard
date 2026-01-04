@@ -104,6 +104,8 @@ export default function FeedItem({id, ups, nums, title, content }) {
 
           <div className="flex items-center gap-2">
             <input
+              value={commentText}
+              onChange={(e) => setCommentText(e.target.value)}
               type="text"
               placeholder="Write a comment..."
               className={inputClasses}
