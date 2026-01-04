@@ -13,6 +13,7 @@ export default function Home({setTheme, setPage}) {
         month: 'long',
         day: 'numeric'
     });
+    
     useEffect(() => {
       const startTime = setInterval(() => {
          setTime(new Date().toLocaleTimeString());

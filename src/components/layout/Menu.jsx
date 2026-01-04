@@ -11,13 +11,14 @@ export default function Menu({setPage}) {
   const [newPostTitle, setNewPostTitle] = useState('');
   const [newPostContent, setNewPostContent] = useState('');
  
-  console.log("User in Menu component is ", user.username);  
+  console.log("User in Menu component is ", user.username);
+  console.log(userPosts);
   
   const handleClick = (page) => {
     console.log("Button clicked");
     setPage(page);
   } 
-  const style = `p-3 rounded-full active:bg-white/10 transition duration-300`;
+  const style = `p-3 rounded-full active:bg-white/10 transition duration-300 cursor-pointer`;
  
   const handlePostSubmit = () => {
     setUserPosts(prevPosts => [
@@ -30,6 +31,8 @@ export default function Menu({setPage}) {
       },
       ...prevPosts
     ]);
+    setNewPostContent('');
+    setNewPostTitle('');
     setShowModal(false);
   };  
 
@@ -55,7 +58,8 @@ export default function Menu({setPage}) {
               className={style}
               onClick={()=> handleClick('stats')}
         ><VscGraphLine /></button>
-        <ProfileAvatar name={user} size="sm" onClick={()=> handleClick('profile')}/>
+
+        <ProfileAvatar  name={user} size="sm" onClick={()=> handleClick('profile')} className="cursor-pointer"/>
     </div>
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>

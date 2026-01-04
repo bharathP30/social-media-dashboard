@@ -8,6 +8,7 @@ export default function RedditFeed(){
   const [posts, setPosts] = useState(userPosts || []);
   const [loading, setLoading] = useState(true);
   const theme = useContext(ThemeContext); 
+  console.log("feed in RedditFeed component is ", userPosts);
   
   useEffect(() => {
     fetch('https://www.reddit.com/r/funny.json?limit=5')

@@ -1,4 +1,4 @@
-const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', onClick }) => {
+const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', onClick, className = '' }) => {
   console.log('name in ProfileAvatar is ', name);
   const userName = typeof name === 'object' ? name?.username : 'User';
   const userPhoto = typeof name === 'object' ? name?.photo : imageUrl;
@@ -45,16 +45,16 @@ const ProfileAvatar = ({ name = 'User', imageUrl, size = 'md', onClick }) => {
   const handleClick = () => {
     console.log("Profile avatar clicked");
     onClick && onClick();
-  };
+    };
 
   return (
     <div onClick={handleClick}
-      className={`relative inline-flex items-center justify-center overflow-hidden rounded-full ${sizeClasses[size]} ${bgColor}`}
+      className={`relative inline-flex items-center justify-center overflow-hidden rounded-full ${sizeClasses[size]} ${bgColor} ${className}`}
     >
       {image ? (
         <img
           src={image}
-          alt={name}
+          alt={"Photo of " + userName}
           className="w-full h-full object-cover"
           onError={(e) => {
             e.target.style.display = 'none'; 

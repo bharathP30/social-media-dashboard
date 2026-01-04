@@ -90,6 +90,11 @@ const addComment = (postId, commentText) => {
     console.log("set User to " + name);
   }
 
+  const clearAll = () => {
+    setUserPosts([]);
+    setUserInteractions({});
+  }
+
   const ThemeSet = (theme) => {
     setTheme(theme);
   };

@@ -6,7 +6,7 @@ export default function Statistics({setTheme, setPage}) {
     const theme = useContext(ThemeContext);
     const {user} = useContext(UserContext);
     console.log("User in Statistics component is ", user);
-    const cardStyle = `p-4 rounded-lg shadow-md ${theme === 'light' ? 'bg-white/20 border-white/30' : 'bg-black/50 border-white/20'}`;
+    const cardStyle = `p-4 rounded-lg shadow-md hover:scale-105 transition-all duration-300 ${theme === 'light' ? 'bg-white/20 border-white/30 hover:shadow-black/20' : 'bg-black/50 border-white/20 hover:shadow-white/20'}`;
     const cardDataStyle1 = `text-sm font-thin ${theme === 'light' ? 'text-black' : 'text-white'}`;
     const cardDataStyle2 = `text-2xl font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`;
 

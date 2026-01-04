@@ -2,13 +2,14 @@ import { useState, useContext } from "react";
 import { ThemeContext, UserContext } from "../../App";
 import { SlArrowLeft } from "react-icons/sl";
 import { WiDaySunny, WiMoonAltWaningCrescent4 } from "react-icons/wi";
-import { VscAccount, VscAdd, VscSignOut, VscGraphLine, VscSettingsGear } from "react-icons/vsc";
+import { VscAccount, VscAdd, VscSignOut, VscGraphLine, VscSettingsGear, VscTrash } from "react-icons/vsc";
 import ProfileAvatar  from "../users/ProfileAvatar";
 
 export default function Profile({setTheme, setPage}) {
     const theme = useContext(ThemeContext);
     const {user ,logout} = useContext(UserContext);
     const [showAccount, setShowAccount] = useState(false);
+    const [showSettings, setShowSettings] = useState(false);
 
     const userName = user.username || 'User';
 
@@ -47,7 +48,7 @@ export default function Profile({setTheme, setPage}) {
             
             <ul className="space-y-4 w-full text-center font-sans font-medium">
 
-            <li onClick={()=> setShowAccount(!showAccount)}
+            <li onClick={()=> setShowAccount(prev => !prev)}
               className={`px-4 py-3 rounded-lg transition duration-300 cursor-pointer ${
               theme === 'light'
                 ? 'bg-white/20 hover:bg-white/30 active:bg-white/40'
@@ -83,7 +84,7 @@ export default function Profile({setTheme, setPage}) {
               </div>
             </li>
 
-            <li
+            <li onClick={()=> setShowSettings(prev => !prev)}
             className={`px-4 py-3 rounded-lg transition duration-300 cursor-pointer ${
               theme === 'light'
                 ? 'bg-white/20 hover:bg-white/30 active:bg-white/40'
@@ -94,6 +95,17 @@ export default function Profile({setTheme, setPage}) {
               <VscSettingsGear />
               <span>Settings</span>
               </div>
+              {showSettings && (
+              <div className={`mt-3 p-3 rounded-lg flex items-center gap-2 ${
+                theme === 'light' 
+                  ? 'bg-black/10 text-red-600' 
+                  : 'bg-black/30 text-red-600'
+              }`}>
+                <VscTrash />
+                <span className="text-sm">Clear Data</span>
+              </div>
+              )} 
+
             </li>
 
             <li 
