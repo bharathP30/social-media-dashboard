@@ -9,7 +9,6 @@ export default function RedditFeed(){
   const [loading, setLoading] = useState(true);
   const theme = useContext(ThemeContext); 
   
-  
   useEffect(() => {
     fetch('https://www.reddit.com/r/funny.json?limit=5')
       .then(res => res.json())

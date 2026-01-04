@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ThemeContext, UserContext } from "../../App";
 import Menu from "../layout/Menu";
 import RedditFeed  from "../feed/RedditFeed";
@@ -6,12 +6,19 @@ import RedditFeed  from "../feed/RedditFeed";
 export default function Home({setTheme, setPage}) {
     const theme = useContext(ThemeContext);
     const user = useContext(UserContext);
+    const [time, setTime] = useState("");
     const date = new Date().toLocaleDateString('en-US', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
         day: 'numeric'
     });
+    useEffect(() => {
+      const startTime = setInterval(() => {
+         setTime(new Date().toLocaleTimeString());
+      }, 1000);
+      return () => clearInterval(startTime);
+    }, []);
 
     console.log("User in Home component is ", user);
     console.log("Current theme in Home component is ", theme);
@@ -23,7 +30,7 @@ export default function Home({setTheme, setPage}) {
         ${
         theme === 'light' ? 'bg-white/20 text-black/50 border-white/20 backdrop-blur-md' : 'bg-gray-600/30 backdrop-blur-2xl text-white/50 border-white/10'
         }`}> 
-          <p>{date}</p>
+          <p>{date}</p> <p>{time}</p> 
         </div>
 
         <RedditFeed />

@@ -61,13 +61,13 @@ export default function Menu({setPage}) {
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <h2 className="text-xl font-medium fonts-sans mb-4 text-white">Create Post</h2>
         <input type="text" value={newPostTitle} onChange={(e) => setNewPostTitle(e.target.value)} placeholder="Title..."
-              className={`w-full p-3 rounded-lg ${
-            theme === 'light' ? 'bg-white/20 border-white/20 text-white placeholder-white/70' : 'bg-black/40 border-white/10 text-white placeholder-white/70 backdrop-blur-2xl'
+              className={`w-full p-3 mb-2 rounded-lg ${
+            theme === 'light' ? 'bg-white/20 border-white/20 text-black placeholder-black/70' : 'bg-black/40 border-white/10 text-white placeholder-white/70 backdrop-blur-2xl'
           } focus:outline-none focus:ring-1 focus:ring-white/40 transition`}
         />
         <textarea 
           className={`w-full p-3 rounded-lg ${
-            theme === 'light' ? 'bg-white/20 border-white/20 text-white placeholder-white/70' : 'bg-black/40 border-white/10 text-white placeholder-white/70 backdrop-blur-2xl'
+            theme === 'light' ? 'bg-white/20 border-white/20 text-black placeholder-black/70' : 'bg-black/40 border-white/10 text-white placeholder-white/70 backdrop-blur-2xl'
           } focus:outline-none focus:ring-1 focus:ring-white/40 transition`}
           placeholder="What's on your mind?"
           rows="4"
