@@ -96,10 +96,10 @@ export default function Profile({setTheme, setPage}) {
               <span>Settings</span>
               </div>
               {showSettings && (
-              <div className={`mt-3 p-3 rounded-lg flex items-center gap-2 ${
+              <div className={`mt-3 p-3 rounded-lg border flex items-center gap-2 ${
                 theme === 'light' 
-                  ? 'bg-black/10 text-red-600' 
-                  : 'bg-black/30 text-red-600'
+                  ? 'bg-black/10 border-white/20 text-red-700' 
+                  : 'bg-black/30 border-white/10 text-red-600'
               }`}>
                 <VscTrash />
                 <span className="text-sm">Clear Data</span>

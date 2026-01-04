@@ -83,7 +83,7 @@ export default function Login({setUser, setTheme}) {
           </div>
 
           <input type="text"
-                className={`outline-none p-4 w-full md:w-11/12 rounded-md focus:ring-1 ${theme === 'light' ? ' bg-black/10 focus:ring-white/30 text-black' : 'bg-black/30 text-white focus:ring-white/10'}`} 
+                className={`outline-none p-4 w-full md:w-11/12 rounded-md focus:ring-1 ${theme === 'light' ? ' bg-black/10 focus:ring-white/20 text-black placeholder:text-black/70' : 'bg-black/30 text-white focus:ring-white/10'}`} 
                 name="username"
                 value={name}
                 onChange={(event)=>setName(event.target.value)}
