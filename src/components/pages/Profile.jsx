@@ -7,7 +7,7 @@ import ProfileAvatar  from "../users/ProfileAvatar";
 
 export default function Profile({setTheme, setPage}) {
     const theme = useContext(ThemeContext);
-    const {user ,logout} = useContext(UserContext);
+    const {user, clearAll, logout} = useContext(UserContext);
     const [showAccount, setShowAccount] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
 
@@ -96,7 +96,9 @@ export default function Profile({setTheme, setPage}) {
               <span>Settings</span>
               </div>
               {showSettings && (
-              <div className={`mt-3 p-3 rounded-lg border flex items-center gap-2 ${
+              <div 
+                onClick={clearAll}
+                className={`mt-3 p-3 rounded-lg border flex items-center gap-2 ${
                 theme === 'light' 
                   ? 'bg-black/10 border-white/20 text-red-700' 
                   : 'bg-black/30 border-white/10 text-red-600'
@@ -112,7 +114,6 @@ export default function Profile({setTheme, setPage}) {
               onClick={()=> {
               logout();
               setPage('home');
-              window.location.reload();
               }}
               className={`px-4 py-3 rounded-lg transition duration-300 cursor-pointer border ${
               theme === 'light'

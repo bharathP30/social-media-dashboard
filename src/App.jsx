@@ -5,40 +5,11 @@ import Statistics from "./components/pages/Statistics";
 import Profile from "./components/pages/Profile";
 import darkBGD from './assets/images/darkBGD.jpg';
 import pinkBGD from './assets/images/pinkBGD.jpg';
+import useLocalStorage from "./components/functions/useLocalStorage";
 
 export const ThemeContext = createContext();
 export const UserContext = createContext();
 export const PageContext = createContext();
-
-const useLocalStorage = (key, initialValue) => {
-  const [storedValue, setStoredValue] = useState(() => {
-    try {
-      const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      console.log(error);
-      return initialValue;
-    }
-  });
-
-  const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    if (isLoaded) {
-      try {
-        window.localStorage.setItem(key, JSON.stringify(storedValue));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }, [key, storedValue, isLoaded]);
-
-  return [storedValue, setStoredValue];
-};
-
 
 export default function App() {
   const [user, setUser] = useLocalStorage("user", null);
@@ -91,6 +62,7 @@ const addComment = (postId, commentText) => {
   }
 
   const clearAll = () => {
+    console.log("Clearing all user data");
     setUserPosts([]);
     setUserInteractions({});
   }
@@ -121,7 +93,7 @@ const addComment = (postId, commentText) => {
   return (
     <div className="w-full min-h-screen min-w-screen bg-cover bg-fixed bg-no-repeat"  style={{ backgroundImage: `url('${theme === 'light' ? pinkBGD : darkBGD}')` }}>
       <ThemeContext.Provider value={theme}>
-        <UserContext.Provider value={{user, UserSet, logout, userInteractions, handleLike, addComment, userPosts, setUserPosts}}>
+        <UserContext.Provider value={{user, UserSet, clearAll, logout, userInteractions, handleLike, addComment, userPosts, setUserPosts}}>
           <PageContext.Provider value={currentPage}>
             {!user ? (<Login setUser={UserSet} setTheme={ThemeSet} />) 
             : (<div className="animate-in fade-in duration-300">
